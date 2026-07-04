@@ -17,7 +17,7 @@ export default function StickyMobileCTA() {
       {visible && (
         <motion.div
           className="fixed bottom-0 left-0 right-0 z-50 md:hidden px-5 pb-6 pt-4"
-          style={{ background: 'linear-gradient(to top, #0A0A0A 60%, transparent)' }}
+          style={{ background: 'linear-gradient(to top, #101C42 60%, transparent)' }}
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
@@ -25,11 +25,11 @@ export default function StickyMobileCTA() {
         >
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full min-h-[52px] text-white rounded-full font-bold text-sm tracking-wide active:scale-[0.98] transition-transform"
-            style={{ background: 'linear-gradient(135deg, #4F46E5, #22D3EE)' }}>
-            Quero minha vaga
+            style={{ background: '#5D8BFF', boxShadow: '0 10px 28px rgba(93,139,255,0.4)' }}>
+            Falar com a Mari
             <ArrowRight className="w-4 h-4 flex-shrink-0" />
           </a>
-          <p className="text-center text-[#52525B] text-[10px] mt-2.5">Sem compromisso · Vagas limitadas</p>
+          <p className="text-center text-white/50 text-[10px] mt-2.5">Sem compromisso · Vagas limitadas</p>
         </motion.div>
       )}
     </AnimatePresence>

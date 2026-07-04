@@ -1,64 +1,50 @@
 import React from 'react';
 import HeroBannerSection from '../components/sections/HeroBannerSection';
-import VSLSection from '../components/sections/VSLSection';
-import CTABandSection from '../components/sections/CTABandSection';
 import DepoimentosReaisSection from '../components/sections/DepoimentosReaisSection';
-import MentorSection from '../components/sections/MentorSection';
+import VSLSection from '../components/sections/VSLSection';
+import MentorSection, { MentorIntroSection } from '../components/sections/MentorSection';
+import ParaQuemSection from '../components/sections/ParaQuemSection';
+import HistoriaSection from '../components/sections/HistoriaSection';
 import ComoFuncionaSection from '../components/sections/ComoFuncionaSection';
 import ComparacaoSection from '../components/sections/ComparacaoSection';
-import MariIASection from '../components/sections/MariIASection';
-import ArgumentoSection from '../components/sections/ArgumentoSection';
-import TiposMentoriaSection from '../components/sections/TiposMentoriaSection';
-import ParaQuemSection from '../components/sections/ParaQuemSection';
 import FAQSection from '../components/sections/FAQSection';
-import HistoriaSection from '../components/sections/HistoriaSection';
-import ProximoPassoSection from '../components/sections/ProximoPassoSection';
+import CTABandSection from '../components/sections/CTABandSection';
 
 export default function Home() {
   return (
     <>
-      {/* 1. Impacto inicial */}
+      {/* 1. Impacto inicial + estatísticas */}
       <HeroBannerSection />
 
-      {/* 2. VSL — gerar curiosidade */}
-      <VSLSection />
-
-      {/* 3. Primeira CTA */}
-      <CTABandSection variant="primary" />
-
-      {/* 4. Prova — resultados reais */}
+      {/* 2. Prova — resultados reais */}
       <DepoimentosReaisSection />
 
-      {/* 5. Autoridade — quem é a mentora */}
+      {/* 3. VSL + aprovações */}
+      <VSLSection />
+
+      {/* 4. Quem vai te guiar — a Mari */}
+      <MentorIntroSection />
+
+      {/* 5. Outros mentores */}
       <MentorSection />
 
-      {/* 6. Método — como funciona */}
-      <ComoFuncionaSection />
-
-      {/* 7. Comparação — com/sem método */}
-      <ComparacaoSection />
-
-      {/* 8. Demonstração — Mari IA */}
-      <MariIASection />
-
-      {/* 9. Argumento lógico */}
-      <ArgumentoSection />
-
-      {/* 10. Modalidades */}
-      <TiposMentoriaSection />
-
-      {/* 11. Para quem é */}
+      {/* 6. Para quem é */}
       <ParaQuemSection />
 
-      {/* 12. FAQ */}
-      <FAQSection />
-
-      {/* 13. História pessoal */}
+      {/* 7. História pessoal */}
       <HistoriaSection />
 
-      {/* 14. CTA Final */}
-      <CTABandSection variant="secondary" />
-      <ProximoPassoSection />
+      {/* 8. Por que o método funciona */}
+      <ComoFuncionaSection />
+
+      {/* 9. Comparação — com/sem método */}
+      <ComparacaoSection />
+
+      {/* 10. FAQ */}
+      <FAQSection />
+
+      {/* 11. CTA Final */}
+      <CTABandSection />
     </>
   );
 }

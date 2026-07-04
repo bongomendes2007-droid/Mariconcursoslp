@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1D2B63', // azul-marinho fundo
+          DEFAULT: '#1A2B5E', // azul-marinho fundo
           light: '#214C8F',
         },
         secondary: '#5D8BFF', // azul destaque
@@ -17,7 +17,7 @@ export default {
         surface: '#FFFFFF',
         border: '#E6E8EC',
         ink: {
-          DEFAULT: '#1E1E1E', // texto primário
+          DEFAULT: '#2D3748', // texto escuro (cinza-ardósia, nunca preto puro)
           soft: '#5C6575', // texto secundário
           inverse: '#FFFFFF', // texto inverso
         },
@@ -25,6 +25,7 @@ export default {
       fontFamily: {
         heading: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'ui-serif', 'serif'],
       },
       fontSize: {
         display: ['4rem', { lineHeight: '1.1', fontWeight: '800' }], // 64

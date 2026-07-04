@@ -22,7 +22,7 @@ export default function WhatsAppButton({ floating = false }) {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#3B82F6] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow md:hidden"
+        className="fixed bottom-6 right-6 z-50 bg-secondary text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow md:hidden"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1, duration: 0.3 }}
@@ -39,12 +39,12 @@ export default function WhatsAppButton({ floating = false }) {
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 bg-[#3B82F6] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#2563EB] transition-colors shadow-lg hover:shadow-xl"
+      className="inline-flex items-center gap-2 bg-secondary text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent hover:text-primary transition-colors shadow-lg hover:shadow-xl"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
       <MessageCircle className="w-5 h-5" />
-      Quero fazer parte da mentoria
+      Falar com a Mari
     </motion.a>
   );
 }

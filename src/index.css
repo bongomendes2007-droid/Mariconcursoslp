@@ -7,7 +7,7 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  background: #1d2b63; /* primary */
+  background: #1a2b5e; /* primary */
 }
 
 @layer base {
