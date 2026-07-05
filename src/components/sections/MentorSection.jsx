@@ -74,6 +74,24 @@ export function MentorIntroSection() {
               ))}
             </ul>
 
+            {/* Foto da Mari — versão MOBILE, no fluxo, entre texto e botão */}
+            <div className="sm:hidden relative mx-auto mb-8 w-[85%] max-w-[340px]">
+              <div
+                className="absolute inset-x-4 top-6 bottom-0 z-0"
+                style={{ borderRadius: '32px 0 0 0', background: '#1A2B5E' }}
+              />
+              <motion.img
+                src={assets.mari.sticker}
+                alt="Mariana Lima"
+                className="relative z-10 block w-full h-auto"
+                style={{ filter: 'drop-shadow(0 18px 36px rgba(17,29,68,0.28))' }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              />
+            </div>
+
             <motion.a
               href={whatsappLink}
               target="_blank"
