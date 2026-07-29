@@ -11,7 +11,7 @@ const faqs = [
   {
     pergunta: 'Serve para qualquer concurso?',
     resposta:
-      'Sim. O método é aplicável a tribunais, prefeituras, bancos, área fiscal e demais carreiras. O plano se adapta ao edital que você escolher focar.',
+      'Sim. O método é aplicável a TRF, tribunais, carreiras policiais, TRT e demais carreiras. O plano se adapta ao edital que você escolher focar.',
   },
   {
     pergunta: 'Tenho pouco tempo para estudar. Funciona?',

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Play, Landmark } from 'lucide-react';
 import assets from '../../data/assets';
 
-const orgaos = ['TRF', 'Prefeituras', 'Bancos públicos', 'Receita Federal', 'Tribunais'];
+const orgaos = ['TRF', 'Tribunais', 'Carreiras Policiais', 'TRT'];
 
 export default function VSLSection() {
   const [playing, setPlaying] = useState(false);

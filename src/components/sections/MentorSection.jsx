@@ -130,15 +130,6 @@ export function MentorIntroSection() {
 
 const supporting = [
   {
-    id: 'victor',
-    name: 'Victor Carvalho',
-    role: 'Técnico Judiciário Federal · JFSP/TRF3-SP',
-    description:
-      '+10 aprovações em tribunais (TRF5, TRT7, TRT6, TRT1, TRF1) e no MPPI. Nomeado Analista Previdenciário de Teresina (8º lugar).',
-    image: assets.mentores.victorCarvalhoLocal,
-    panel: '#76D7E3',
-  },
-  {
     id: 'vitor',
     name: 'Vitor Vilarinho',
     role: 'Oficial de Justiça · TJMA',
@@ -182,7 +173,7 @@ export default function MentorSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
           {supporting.map((mentor, i) => (
             <motion.div
               key={mentor.id}
