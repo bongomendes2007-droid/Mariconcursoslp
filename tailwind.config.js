@@ -1,53 +1,52 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './index.html',
-    './src/**/*.{js,jsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1A2B5E', // azul-marinho fundo
+          DEFAULT: '#1A2B5E', // azul-marinho
           light: '#214C8F',
+          deep: '#101C42', // fundo mais escuro (hero/CTA)
         },
-        secondary: '#5D8BFF', // azul destaque
+        secondary: '#4F7BF0', // azul "tinta" — um pouco mais denso que o antigo #5D8BFF p/ contraste sobre papel
         accent: '#76D7E3', // ciano
-        background: '#F9F6F2', // fundo claro
+        background: '#F6F3EC', // papel
+        paper: {
+          DEFAULT: '#F6F3EC',
+          deep: '#EEE9DE',
+        },
         surface: '#FFFFFF',
         border: '#E6E8EC',
         ink: {
-          DEFAULT: '#2D3748', // texto escuro (cinza-ardósia, nunca preto puro)
-          soft: '#5C6575', // texto secundário
-          inverse: '#FFFFFF', // texto inverso
+          DEFAULT: '#14214D', // texto: azul-marinho como tinta, nunca preto puro
+          soft: '#4A5577',
+          faint: '#7C849C',
+          inverse: '#FFFFFF',
         },
       },
       fontFamily: {
-        heading: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'ui-serif', 'serif'],
-      },
-      fontSize: {
-        display: ['4rem', { lineHeight: '1.1', fontWeight: '800' }], // 64
-        h1: ['3.25rem', { lineHeight: '1.1', fontWeight: '700' }], // 52
-        h2: ['2.625rem', { lineHeight: '1.1', fontWeight: '700' }], // 42
-        h3: ['2rem', { lineHeight: '1.1', fontWeight: '600' }], // 32
-        h4: ['1.5rem', { lineHeight: '1.2', fontWeight: '600' }], // 24
-        body: ['1.125rem', { lineHeight: '1.7' }], // 18
-        small: ['0.875rem', { lineHeight: '1.6' }], // 14
-      },
-      spacing: {
-        section: '120px',
-        'section-mobile': '64px',
+        // Display editorial (títulos). Fraunces tem eixo óptico: fica firme grande e legível pequeno.
+        display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+        serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+        // UI e corpo
+        heading: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Numeração de artigos, incisos, rótulos
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       borderRadius: {
-        card: '24px',
+        card: '20px',
+        media: '14px',
         pill: '999px',
       },
-      boxShadow: {
-        sm: '0 2px 8px rgba(0,0,0,.08)',
-        md: '0 8px 24px rgba(0,0,0,.12)',
-        lg: '0 20px 50px rgba(0,0,0,.15)',
+      transitionTimingFunction: {
+        out: 'cubic-bezier(0.23, 1, 0.32, 1)',
+        'in-out': 'cubic-bezier(0.77, 0, 0.175, 1)',
+        drawer: 'cubic-bezier(0.32, 0.72, 0, 1)',
+      },
+      maxWidth: {
+        page: '1200px',
       },
     },
   },

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus } from 'lucide-react';
+import React, { useId, useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import Article, { Em } from '../ui/Article';
 
 const faqs = [
   {
@@ -30,98 +30,98 @@ const faqs = [
   },
 ];
 
-function FAQItem({ item, isOpen, onToggle }) {
+// Abre em 260ms, fecha em 200ms (saída mais rápida que a entrada).
+const EASE = [0.23, 1, 0.32, 1];
+
+function FAQItem({ item, index, isOpen, onToggle }) {
+  const id = useId();
+  const reduce = useReducedMotion();
   return (
-    <div
-      className="bg-white rounded-[18px] overflow-hidden transition-shadow duration-300"
-      style={{ boxShadow: isOpen ? '0 18px 44px rgba(17,29,68,0.10)' : '0 10px 30px rgba(17,29,68,0.05)' }}
-    >
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between px-7 py-[22px] text-left gap-5"
-      >
-        <span className="font-heading font-semibold text-[17.5px] text-ink">{item.pergunta}</span>
-        <motion.span
-          className="flex-shrink-0 w-[30px] h-[30px] rounded-full border flex items-center justify-center text-secondary"
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-          style={{
-            borderColor: isOpen ? '#5D8BFF' : '#E1E4EA',
-            background: isOpen ? 'rgba(93,139,255,0.10)' : 'transparent',
-          }}
+    <li className="border-b rule">
+      <h3>
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={id}
+          className="faq-q w-full flex items-baseline gap-5 md:gap-8 py-6 md:py-7 text-left"
         >
-          <Plus className="w-3.5 h-3.5" strokeWidth={2.5} />
-        </motion.span>
-      </button>
+          <span className="font-mono text-[12px] text-ink-faint w-8 shrink-0 tabular">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <span className="flex-1 font-display font-[460] text-[21px] md:text-[25px] leading-[1.25] tracking-[-0.015em] text-ink">
+            {item.pergunta}
+          </span>
+          <span
+            aria-hidden="true"
+            className="faq-icon relative w-4 h-4 shrink-0 self-center text-secondary"
+            data-open={isOpen}
+          >
+            <span className="absolute left-0 top-1/2 w-4 h-[1.5px] -mt-px bg-current" />
+            <span className="faq-icon-v absolute left-1/2 top-0 h-4 w-[1.5px] -ml-px bg-current" />
+          </span>
+        </button>
+      </h3>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={id}
+            role="region"
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            animate={{ height: 'auto', opacity: 1, transition: { duration: reduce ? 0 : 0.26, ease: EASE } }}
+            exit={{ height: 0, opacity: 0, transition: { duration: reduce ? 0 : 0.2, ease: EASE } }}
             className="overflow-hidden"
           >
-            <p className="text-[15px] leading-[1.7] text-ink-soft px-7 pb-6">{item.resposta}</p>
+            <p className="pl-[52px] md:pl-[64px] pr-10 pb-7 max-w-[62ch] text-[16px] leading-[1.7] text-ink-soft">
+              {item.resposta}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </li>
   );
 }
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-background py-28 px-5 md:px-6">
-      {/* palavra gigante de fundo */}
-      <div
-        aria-hidden="true"
-        className="absolute top-14 -right-7 z-0 font-heading font-extrabold pointer-events-none select-none hidden md:block"
-        style={{
-          fontSize: '168px',
-          lineHeight: 0.9,
-          letterSpacing: '-6px',
-          color: 'transparent',
-          WebkitTextStroke: '1.5px rgba(93,139,255,0.10)',
-        }}
-      >
-        dúvidas
+    <section id="faq" className="paper-grain py-24 md:py-32">
+      <div className="max-w-page mx-auto px-5 md:px-8">
+        <Article
+          n={9}
+          label="Das disposições finais"
+          title={
+            <>
+              Perguntas <Em>frequentes</Em>
+            </>
+          }
+        />
+
+        <div className="mt-12 md:mt-16 lg:grid lg:grid-cols-12 lg:gap-8">
+          <ul className="lg:col-start-4 lg:col-span-9 border-t rule">
+            {faqs.map((faq, i) => (
+              <FAQItem
+                key={faq.pergunta}
+                item={faq}
+                index={i}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-[820px] mx-auto">
-        <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-3 mb-5">
-            <span className="w-[30px] h-0.5 bg-secondary" />
-            <span className="text-secondary text-[12.5px] font-bold tracking-[0.2em] uppercase">
-              Tire suas dúvidas
-            </span>
-            <span className="w-[30px] h-0.5 bg-secondary" />
-          </div>
-          <h2 className="font-heading font-extrabold text-4xl md:text-[50px] leading-[1.05] tracking-[-0.02em] text-ink">
-            Perguntas <span className="font-serif italic font-medium text-secondary">frequentes</span>
-          </h2>
-        </motion.div>
-
-        <motion.div
-          className="flex flex-col gap-3.5"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {faqs.map((faq, i) => (
-            <FAQItem key={faq.pergunta} item={faq} isOpen={openIndex === i} onToggle={() => setOpenIndex(openIndex === i ? null : i)} />
-          ))}
-        </motion.div>
-      </div>
+      <style>{`
+        .faq-icon-v { transition: transform 200ms var(--ease-out); }
+        .faq-icon[data-open="true"] .faq-icon-v { transform: scaleY(0); }
+        .faq-q { -webkit-tap-highlight-color: transparent; }
+        @media (hover: hover) and (pointer: fine) {
+          .faq-q > span:nth-child(2) { transition: color 200ms ease; }
+          .faq-q:hover > span:nth-child(2) { color: #4F7BF0; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -7,16 +7,16 @@ import StickyMobileCTA from './components/StickyMobileCTA';
 import assets from './data/assets';
 
 const navLinks = [
-  { label: 'Sobre', href: '#sobre' },
+  { label: 'A Mari', href: '#mari' },
   { label: 'Como funciona', href: '#metodo' },
   { label: 'Aprovações', href: '#aprovacoes' },
   { label: 'Depoimentos', href: '#depoimentos' },
 ];
 
 const footerNav = [
-  { label: 'Sobre a Mari', href: '#sobre' },
+  { label: 'Sobre a Mari', href: '#mari' },
   { label: 'Como funciona', href: '#metodo' },
-  { label: 'Mentores', href: '#aprovacoes' },
+  { label: 'Mentores', href: '#mentores' },
   { label: 'Depoimentos', href: '#depoimentos' },
 ];
 
@@ -47,32 +47,24 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="min-h-screen bg-primary">
-      <style>{`
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #1A2B5E; }
-        ::-webkit-scrollbar-thumb { background: #214C8F; border-radius: 3px; }
-        ::selection { background: #5D8BFF; color: #fff; }
-        :focus-visible { outline: 2px solid #76D7E3; outline-offset: 3px; border-radius: 4px; }
-      `}</style>
-
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-primary/90 backdrop-blur-xl border-b border-white/10'
-            : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ease-out ${
+          isScrolled || mobileMenuOpen
+            ? 'bg-primary-deep/85 backdrop-blur-xl border-white/10'
+            : 'bg-transparent border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-page mx-auto px-5 md:px-8">
+          <div className="flex items-center justify-between h-[72px]">
             <Link to="/" className="flex items-center" aria-label="MariConcursos — início">
-              <Logo />
+              <Logo className="h-9" />
             </Link>
 
             <nav className="hidden md:flex items-center gap-8">
@@ -80,7 +72,7 @@ export default function Layout({ children }) {
                 <a
                   key={l.href}
                   href={l.href}
-                  className="text-white/80 hover:text-accent text-[15px] font-medium transition-colors"
+                  className="link-underline text-white/75 hover:text-white text-[14.5px] font-medium"
                 >
                   {l.label}
                 </a>
@@ -89,8 +81,7 @@ export default function Layout({ children }) {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white px-6 py-2.5 rounded-pill font-semibold text-sm shadow-md transition-colors hover:bg-accent hover:text-primary"
-                style={{ background: '#5D8BFF' }}
+                className="btn btn-primary min-h-[42px] px-5 text-[14px]"
               >
                 Falar com a Mari
               </a>
@@ -111,16 +102,16 @@ export default function Layout({ children }) {
           {mobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-primary-light/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
+              animate={{ opacity: 1, height: 'auto', transition: { duration: 0.3, ease: [0.32, 0.72, 0, 1] } }}
+              exit={{ opacity: 0, height: 0, transition: { duration: 0.2, ease: [0.32, 0.72, 0, 1] } }}
+              className="md:hidden border-t border-white/10 overflow-hidden"
             >
               <div className="px-6 py-6 flex flex-col gap-1">
                 {navLinks.map((l) => (
                   <a
                     key={l.href}
                     href={l.href}
-                    className="text-white/80 hover:text-white py-3 text-base font-medium transition-colors"
+                    className="font-display text-[26px] text-white py-2.5 border-b border-white/10"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {l.label}
@@ -130,8 +121,7 @@ export default function Layout({ children }) {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 flex items-center justify-center gap-2 text-white px-6 py-3.5 rounded-pill font-semibold w-full text-sm"
-                  style={{ background: 'linear-gradient(135deg, #5D8BFF, #76D7E3)' }}
+                  className="btn btn-primary mt-3 w-full min-h-[52px] text-[15px]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -153,16 +143,16 @@ export default function Layout({ children }) {
             <div>
               <Logo className="h-12 mb-5" />
               <p className="text-white/55 text-[14.5px] leading-relaxed max-w-xs">
-                Mentoria de concursos públicos com método, acompanhamento próximo e um time que já
-                levou centenas de alunos à aprovação.
+                Mentoria de concursos públicos com método, acompanhamento próximo e um time de
+                mentores aprovados em grandes concursos.
               </p>
             </div>
 
             <div>
-              <div className="font-heading font-bold text-sm text-white mb-4">Navegação</div>
+              <div className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-white/45 mb-5">Navegação</div>
               <div className="flex flex-col gap-3 text-[14.5px]">
                 {footerNav.map((l) => (
-                  <a key={l.label} href={l.href} className="text-white/60 hover:text-accent transition-colors">
+                  <a key={l.label} href={l.href} className="link-underline text-white/70 hover:text-white">
                     {l.label}
                   </a>
                 ))}
@@ -170,7 +160,7 @@ export default function Layout({ children }) {
             </div>
 
             <div>
-              <div className="font-heading font-bold text-sm text-white mb-4">Ajuda</div>
+              <div className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-white/45 mb-5">Ajuda</div>
               <div className="flex flex-col gap-3 text-[14.5px]">
                 {footerAjuda.map((l) => (
                   <a
@@ -178,7 +168,7 @@ export default function Layout({ children }) {
                     href={l.href}
                     target={l.href.startsWith('http') ? '_blank' : undefined}
                     rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="text-white/60 hover:text-accent transition-colors"
+                    className="link-underline text-white/70 hover:text-white"
                   >
                     {l.label}
                   </a>
@@ -187,14 +177,14 @@ export default function Layout({ children }) {
             </div>
 
             <div>
-              <div className="font-heading font-bold text-sm text-white mb-4">Redes sociais</div>
+              <div className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-white/45 mb-5">Redes sociais</div>
               <div className="flex gap-3">
                 {socialLinks.map(({ label, href, Icon }) => (
                   <a
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="w-[42px] h-[42px] rounded-full bg-white/[0.06] border border-white/[0.12] flex items-center justify-center text-white/75 hover:bg-secondary hover:text-white transition-colors"
+                    className="w-[42px] h-[42px] rounded-full bg-white/[0.06] border border-white/[0.12] flex items-center justify-center text-white/75 hover:bg-secondary hover:text-white transition-colors duration-200"
                   >
                     <Icon className="w-[19px] h-[19px]" strokeWidth={1.8} />
                   </a>

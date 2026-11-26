@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { X, Check } from 'lucide-react';
+import { Minus, Check } from 'lucide-react';
+import Article, { Em } from '../ui/Article';
 
 const sem = [
   'Material genérico, sem prioridade do que mais cai',
@@ -19,96 +19,66 @@ const com = [
 export default function ComparacaoSection() {
   return (
     <section
-      className="relative overflow-hidden py-24 px-5 md:px-6"
-      style={{ background: 'radial-gradient(120% 100% at 30% 0%, #24356F 0%, #16224C 52%, #0F1A3E 100%)' }}
+      className="relative py-24 md:py-32"
+      style={{ background: 'linear-gradient(180deg, #16224C 0%, #101C42 100%)' }}
     >
-      <div className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          className="text-center max-w-xl mx-auto mb-14"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-3 mb-5">
-            <span className="w-[30px] h-0.5 bg-accent" />
-            <span className="text-accent text-[12.5px] font-bold tracking-[0.2em] uppercase">
-              A diferença é o método
-            </span>
-            <span className="w-[30px] h-0.5 bg-accent" />
-          </div>
-          <h2 className="font-heading font-extrabold text-4xl md:text-[50px] leading-[1.05] tracking-[-0.02em] text-white">
-            O que muda com um{' '}
-            <span className="font-serif italic font-medium text-accent">método</span>
-          </h2>
-        </motion.div>
+      <div className="max-w-page mx-auto px-5 md:px-8">
+        <Article
+          n={8}
+          tone="dark"
+          label="Do que muda"
+          title={
+            <>
+              O que muda com um <Em tone="dark">método</Em>
+            </>
+          }
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[26px]">
-          <motion.div
-            className="rounded-card p-9"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)' }}
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-heading font-bold text-xl text-white/85 mb-[26px]">Estudando por conta própria</p>
-            <div className="flex flex-col gap-[18px]">
-              {sem.map((item, i) => (
-                <motion.div
-                  key={item}
-                  className="flex items-start gap-3.5"
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.07, duration: 0.4 }}
-                >
-                  <span className="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-white/10 flex items-center justify-center text-white/55">
-                    <X className="w-3 h-3" strokeWidth={3} />
-                  </span>
-                  <span className="text-[14.5px] leading-[1.6] text-white/60">{item}</span>
-                </motion.div>
-              ))}
+        <div className="mt-14 md:mt-20 lg:grid lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-start-4 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Sem método — recua: sem fundo, texto apagado */}
+            <div className="md:pr-6 py-2">
+              <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-white/45 mb-6">
+                Estudando por conta própria
+              </p>
+              <ul className="border-t rule-inverse">
+                {sem.map((item) => (
+                  <li key={item} className="flex items-start gap-4 py-4 border-b rule-inverse">
+                    <Minus className="w-4 h-4 mt-1 shrink-0 text-white/35" strokeWidth={2} />
+                    <span className="text-[15.5px] leading-[1.6] text-white/50">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
 
-          <motion.div
-            className="relative rounded-card p-9"
-            style={{
-              background: 'linear-gradient(160deg, #2E4A9E 0%, #1D2B63 100%)',
-              boxShadow: '0 30px 70px rgba(0,0,0,0.35), 0 0 60px rgba(118,215,227,0.20)',
-              border: '1px solid rgba(118,215,227,0.45)',
-            }}
-            initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span
-              className="absolute -top-3 right-6 bg-accent text-primary font-heading font-bold text-[11px] tracking-wider uppercase px-3.5 py-1.5 rounded-pill"
-              style={{ color: '#12224a' }}
+            {/* Com método — avança: superfície, filete ciano, carimbo */}
+            <div
+              className="relative rounded-card p-7 md:p-9"
+              style={{
+                background: 'linear-gradient(160deg, #2C4596 0%, #1C2A62 100%)',
+                boxShadow: 'inset 0 0 0 1px rgba(118,215,227,0.35), 0 30px 60px -30px rgba(0,0,0,0.6)',
+              }}
             >
-              Recomendado
-            </span>
-            <p className="font-heading font-bold text-[21px] text-white mb-[26px]">Com o método MariConcursos</p>
-            <div className="flex flex-col gap-[18px]">
-              {com.map((item, i) => (
-                <motion.div
-                  key={item}
-                  className="flex items-start gap-3.5"
-                  initial={{ opacity: 0, x: 8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.07, duration: 0.4 }}
-                >
-                  <span className="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-accent flex items-center justify-center text-primary">
-                    <Check className="w-3 h-3" strokeWidth={3.5} />
-                  </span>
-                  <span className="text-[14.5px] leading-[1.6] text-white/90">{item}</span>
-                </motion.div>
-              ))}
+              <span
+                aria-hidden="true"
+                className="absolute -top-4 right-6 rotate-[-4deg] font-mono text-[11px] uppercase tracking-[0.14em] text-accent px-3 py-1.5 rounded-[6px] bg-[#101C42]"
+                style={{ boxShadow: 'inset 0 0 0 1.5px #76D7E3' }}
+              >
+                Recomendado
+              </span>
+              <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-accent mb-6">
+                Com o método MariConcursos
+              </p>
+              <ul className="border-t border-white/15">
+                {com.map((item) => (
+                  <li key={item} className="flex items-start gap-4 py-4 border-b border-white/15">
+                    <Check className="w-4 h-4 mt-1 shrink-0 text-accent" strokeWidth={2.5} />
+                    <span className="text-[15.5px] leading-[1.6] text-white">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
