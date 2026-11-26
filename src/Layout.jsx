@@ -63,7 +63,7 @@ export default function Layout({ children }) {
       >
         <div className="max-w-page mx-auto px-5 md:px-8">
           <div className="flex items-center justify-between h-[72px]">
-            <Link to="/" className="flex items-center" aria-label="MariConcursos — início">
+            <Link to="/" className="flex items-center" aria-label="MariConcursos, início">
               <Logo className="h-9" />
             </Link>
 
