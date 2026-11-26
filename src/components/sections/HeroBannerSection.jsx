@@ -37,8 +37,7 @@ export default function HeroBannerSection() {
             className="enter-fade flex items-center gap-4 border-t rule-inverse pt-4 mb-7 md:mb-14 font-mono text-[12px] tracking-[0.08em] uppercase text-white/50"
             style={{ '--d': '0ms' }}
           >
-            <span className="text-accent">Edital nº 01/2026</span>
-            <span className="hidden sm:inline">Mentoria para concursos públicos</span>
+            <span className="text-accent">Mentoria para concursos públicos</span>
             <span className="ml-auto hidden md:inline">Vagas limitadas</span>
           </div>
 
