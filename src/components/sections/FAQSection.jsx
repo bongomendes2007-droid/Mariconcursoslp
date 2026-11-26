@@ -16,7 +16,7 @@ const faqs = [
   {
     pergunta: 'Tenho pouco tempo para estudar. Funciona?',
     resposta:
-      'Funciona — e foi pensado para isso. O plano é dimensionado para a sua disponibilidade real, priorizando o que mais rende dentro do tempo que você tem.',
+      'Funciona, e foi pensado para isso. O plano é dimensionado para a sua disponibilidade real, priorizando o que mais rende dentro do tempo que você tem.',
   },
   {
     pergunta: 'Como funciona o acompanhamento?',

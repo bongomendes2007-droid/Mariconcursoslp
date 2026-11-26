@@ -5,7 +5,7 @@ const paragrafos = [
   {
     titulo: 'Plano individual',
     descricao:
-      'Seu edital, seu tempo, sua realidade. O plano é montado sob medida — não é um cronograma genérico de prateleira.',
+      'Seu edital, seu tempo, sua realidade. O plano é montado sob medida, não é um cronograma genérico de prateleira.',
   },
   {
     titulo: 'Revisão inteligente',

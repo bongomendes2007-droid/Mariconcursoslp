@@ -30,7 +30,7 @@ export default function VSLSection() {
               Toda aprovação começa com <Em tone="dark">método</Em>
             </>
           }
-          intro="Em poucos minutos, a Mari explica como a mentoria funciona na prática — do diagnóstico ao plano."
+          intro="Em poucos minutos, a Mari explica como a mentoria funciona na prática: do diagnóstico ao plano."
         />
 
         <div className="mt-12 md:mt-16 lg:grid lg:grid-cols-12 lg:gap-8">

@@ -6,7 +6,7 @@ import assets from '../../data/assets';
 // ─── Art. 3º — Da mentora ──────────────────────────────────────────────────
 
 const fatos = [
-  'Auditora do Executivo Federal — São Luís, MA',
+  'Auditora do Executivo Federal, São Luís (MA)',
   '11 aprovações acumuladas',
   'Grandes aprovações com apenas 25 anos',
 ];
@@ -46,13 +46,13 @@ export function MentorIntroSection() {
             <div className="space-y-4 text-[16px] leading-[1.7] text-ink-soft max-w-[52ch] mb-10">
               <p>
                 Eu sei como é estudar sem direção, se cobrar demais e ainda assim sentir que não sai
-                do lugar. Foi vivendo isso — e virando o jogo — que desenvolvi um método claro,
+                do lugar. Foi vivendo isso, e virando o jogo, que desenvolvi um método claro,
                 humano e focado no que realmente faz passar. Hoje acompanho de perto cada aluno,
                 adaptando o plano à realidade de cada um.
               </p>
               <p>
                 Mais do que aprovar em um concurso, quero te ver constante, confiante e no controle
-                total da sua preparação — do primeiro edital até a nomeação.
+                total da sua preparação, do primeiro edital até a nomeação.
               </p>
             </div>
 
